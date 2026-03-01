@@ -1,6 +1,7 @@
 'use client';
 
 import { Dumbbell, Instagram, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -48,54 +49,60 @@ export function Footer() {
             <h6 className="mb-4 text-[#e04f21]">Enlaces Rápidos</h6>
             <ul className="space-y-3 text-sm">
               <li>
-                <a
+                <Link
                   href="/#services"
                   className="text-white/70 hover:text-[#e04f21] transition-colors"
                 >
                   Servicios
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/#pricing"
                   className="text-white/70 hover:text-[#e04f21] transition-colors"
                 >
                   Precios
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/horarios"
                   className="text-white/70 hover:text-[#e04f21] transition-colors"
                 >
                   Horarios
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#staff" className="text-white/70 hover:text-[#e04f21] transition-colors">
+                <Link
+                  href="/#staff"
+                  className="text-white/70 hover:text-[#e04f21] transition-colors"
+                >
                   Entrenadores
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/#gallery"
                   className="text-white/70 hover:text-[#e04f21] transition-colors"
                 >
                   Galería
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#blog" className="text-white/70 hover:text-[#e04f21] transition-colors">
+                <Link
+                  href="/#blog"
+                  className="text-white/70 hover:text-[#e04f21] transition-colors"
+                >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/contacto"
                   className="text-white/70 hover:text-[#e04f21] transition-colors"
                 >
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -183,18 +190,37 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>© {currentYear} Actívate Labranza Gym. Todos los derechos reservados.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-[#e04f21] transition-colors">
-              Privacidad
-            </a>
-            <a href="#" className="hover:text-[#e04f21] transition-colors">
-              Términos
-            </a>
-            <a href="#" className="hover:text-[#e04f21] transition-colors">
-              Cookies
-            </a>
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          {/* Copyright Original */}
+          <p className="text-sm text-gray-500 font-medium">
+            © 2026 Actívate Labranza. Todos los derechos reservados.
+          </p>
+
+          {/* SELLO KOALINK: COLABORADOR TECNOLÓGICO (VERSIÓN CÁPSULA) */}
+
+          <div className="group flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/5 hover:border-[#e04f21]/30 transition-all duration-500 cursor-default">
+            <Link href="https://koalink.cl" target="_blank" className="flex items-center gap-2">
+              <div className="flex flex-col items-end leading-tight">
+                <span className="text-[9px] uppercase tracking-[0.15em] text-gray-500 group-hover:text-gray-400 transition-colors">
+                  Colaborador Tecnológico
+                </span>
+                <span className="text-[7px] uppercase tracking-[0.1em] text-[#e04f21]/60 font-bold group-hover:text-[#e04f21] transition-colors">
+                  Infraestructura & AI
+                </span>
+              </div>
+
+              <div className="w-px h-4 bg-white/10 group-hover:bg-[#e04f21]/40 transition-colors" />
+
+              <span className="font-black tracking-tighter text-xs text-white/80 group-hover:text-white transition-colors uppercase">
+                KOA<span className="text-[#e04f21]">LINK</span>
+              </span>
+
+              {/* El punto que pulsa (Sello de sitio activo/optimizado) */}
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#e04f21] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#e04f21]"></span>
+              </span>
+            </Link>
           </div>
         </div>
       </div>
