@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Instagram, Award } from 'lucide-react';
 import Image from 'next/image';
 

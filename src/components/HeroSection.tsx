@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Play, Award, Users, Zap } from 'lucide-react';
 import { iceland } from '@/fonts';
 import Image from 'next/image';

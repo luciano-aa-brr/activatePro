@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { PlanDialog } from './PlanDialog';
 

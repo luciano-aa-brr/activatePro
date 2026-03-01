@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Menu, X, Dumbbell } from 'lucide-react';
 import Link from 'next/link';
 
