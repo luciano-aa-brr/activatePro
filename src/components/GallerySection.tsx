@@ -1,53 +1,46 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Instagram, Play } from 'lucide-react';
 import Image from 'next/image';
 
-const galleryItems = [
-  {
-    type: 'image',
-    src: '/gallery_1.jpeg',
-    caption: 'Instalaciones de última generación'
-  },
-  {
-    type: 'video',
-    src: '/gallery_2.jpeg',
-    caption: 'Sesión intensiva de CrossFit'
-  },
-  {
-    type: 'image',
-    src: '/gallery_3.jpeg',
-    caption: 'Zona de pesas libre'
-  },
-  {
-    type: 'image',
-    src: '/gallery_4.jpeg',
-    caption: 'Clases grupales energéticas'
-  },
-  {
-    type: 'video',
-    src: '/gallery_5.jpeg',
-    caption: 'Entrenamiento de boxing'
-  },
-  {
-    type: 'image',
-    src: '/gallery_6.jpeg',
-    caption: 'Estudio de yoga y meditación'
-  },
-  {
-    type: 'image',
-    src: '/gallery_7.jpeg',
-    caption: 'Zona de cardio premium'
-  },
-  {
-    type: 'image',
-    src: '/gallery_8.jpeg',
-    caption: 'Área de recuperación y estiramientos'
-  }
-];
+// Los elementos ahora se cargan dinámicamente desde el
+// endpoint `/api/gallery`. Cada petición devuelve un pequeño bloque de
+// imágenes (página) y un indicador `hasMore` para saber si hay más
+// datos disponibles. Esto permite crecer hasta miles de imágenes sin
+// penalizar la carga inicial.
+
+interface GalleryItem {
+  type: 'image' | 'video';
+  src: string;
+  caption?: string;
+}
 
 export function GallerySection() {
+  const [items, setItems] = React.useState<GalleryItem[]>([]);
+  const [showAll, setShowAll] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+
+  // fetch all images at once
+  const loadImages = React.useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/gallery?page=1&limit=100`); // Load all images
+      const json = await res.json();
+      setItems(json.items);
+    } catch (error) {
+      console.error('Error loading gallery:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // Load images on mount
+  React.useEffect(() => {
+    loadImages();
+  }, [loadImages]);
+
   return (
     <section id="gallery" className="py-24 relative overflow-hidden bg-[#0a0a0a]">
       {/* Background Elements */}
@@ -82,51 +75,74 @@ export function GallerySection() {
         </motion.div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {galleryItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className={`relative group cursor-pointer overflow-hidden rounded-xl ${index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''}`}
-            >
-              <div className="relative aspect-square overflow-hidden">
-                <Image
-                  src={item.src}
-                  width={300}
-                  height={300}
-                  alt={item.caption}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {loading ? (
+          <div className="flex justify-center items-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#e04f21]"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <AnimatePresence>
+              {(showAll ? items : items.slice(0, 9)).map((item, index) => (
+                <motion.div
+                  key={item.src + index}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ duration: 0.5, delay: index * 0.03 }}
+                  className={`relative group cursor-pointer overflow-hidden rounded-xl ${index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''
+                    }`}
+                >
+                  <div className="relative aspect-square overflow-hidden">
+                    <Image
+                      src={item.src}
+                      width={300}
+                      height={300}
+                      alt={item.caption || ''}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      unoptimized
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                {/* Video Indicator */}
-                {item.type === 'video' && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-[#e04f21]/80 backdrop-blur-sm p-4 rounded-full group-hover:scale-110 transition-transform">
-                      <Play className="w-8 h-8 fill-current" />
+                    {/* Video Indicator */}
+                    {item.type === 'video' && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-[#e04f21]/80 backdrop-blur-sm p-4 rounded-full group-hover:scale-110 transition-transform">
+                          <Play className="w-8 h-8 fill-current" />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Caption */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="font-semibold text-sm">{item.caption}</p>
+                    </div>
+
+                    {/* Instagram Icon */}
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-2 rounded-lg">
+                        <Instagram className="w-4 h-4" />
+                      </div>
                     </div>
                   </div>
-                )}
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
 
-                {/* Caption */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="font-semibold text-sm">{item.caption}</p>
-                </div>
-
-                {/* Instagram Icon */}
-                <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-2 rounded-lg">
-                    <Instagram className="w-4 h-4" />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Show More Button */}
+        {!loading && items.length > 9 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="bg-[#e04f21] hover:bg-[#d13f1f] px-8 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+            >
+              {showAll ? 'Mostrar Menos' : 'Ver Más Fotos'}
+            </button>
+          </div>
+        )}
 
         {/* CTA */}
         <motion.div
