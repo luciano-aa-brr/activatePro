@@ -93,10 +93,10 @@ export function ContactSection() {
                 <div className="flex-1">
                   <h5 className="mb-2">Teléfono</h5>
                   <a
-                    href="tel:+525512345678"
+                    href="tel:+569 54786971"
                     className="text-white/70 hover:text-[#e04f21] transition-colors"
                   >
-                    +52 55 1234 5678
+                    +569 54786971
                   </a>
                   <p className="text-sm text-white/50 mt-1">Lun - Vie: 8:00 AM - 8:00 PM</p>
                 </div>
@@ -112,7 +112,7 @@ export function ContactSection() {
                 <div className="flex-1">
                   <h5 className="mb-2">Email</h5>
                   <a
-                    href="mailto:info@ironfit.com"
+                    href="ayuda@activatepro.cl"
                     className="text-white/70 hover:text-[#e04f21] transition-colors"
                   >
                     activatelabranza@gmail.com
@@ -137,7 +137,7 @@ export function ContactSection() {
             <h4 className="mb-6">Síguenos en Redes</h4>
             <div className="grid grid-cols-2 gap-4">
               <a
-                href="https://www.instagram.com/activatelabranza"
+                href="https://www.instagram.com/activatelabranza/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group glass-hover rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105"
@@ -152,7 +152,7 @@ export function ContactSection() {
               </a>
 
               <a
-                href="https://wa.me/525512345678"
+                href="https://wa.me/56954786971"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group glass-hover rounded-xl p-4 flex flex-col items-center gap-3 transition-all duration-300 hover:scale-105"

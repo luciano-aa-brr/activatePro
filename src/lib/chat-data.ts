@@ -10,14 +10,12 @@ export const CHAT_DATA = {
   ],
   respuestas: {
     planes:
-      'Contamos con opciones para cada objetivo: \n\n• Open Gym ($26.990): Para expertos con rutina propia. \n• Básico ($29.990): 8 clases al mes dirigidas. \n• Actívate Pro ($39.990): 12 clases personalizadas + Open Gym. \n• Fullfit ($59.990): Transformación total con Pilates y Personalizado.',
+      'Nuestras opciones oficiales son: \n\n• Plan Básico ($33.990): Acceso a gimnasio en bloques AM/PM y apoyo técnico. \n• Plan Pro ($42.990): 3 clases personalizadas por semana + horarios exclusivos y descuentos en cafetería.',
     servicios:
-      'Ofrecemos una experiencia integral: \n\n• Entrenamiento Personal y Clases Grupales. \n• CrossFit, Funcional y HIIT. \n• Yoga, Pilates y Nutrición Deportiva. \n• Boxing y Cardio.',
-    staff:
-      'Nuestro equipo está listo para guiarte: \n\n• Carlos Mendoza: Director y experto en Fuerza. \n• María Torres: Especialista en Nutrición. \n• Diego Ramírez: Coach de CrossFit y HIIT. \n• Laura Sánchez: Instructora de Yoga y Pilates.',
+      'Ofrecemos: \n\n• Entrenamiento personalizado con nuestros coaches expertos. \n• Clases grupales de alta energía y técnicas. \n• Asesoría nutricional para potenciar tus resultados. \n• Acceso a instalaciones de primer nivel las 24 horas.',
     filosofia:
       'En Actívate, nos definimos por la Pasión, Objetivos Claros, Resultados Comprobados y una Comunidad Fuerte donde todos somos familia.',
     contacto:
-      '¡Excelente decisión! Haz clic en el botón de abajo para escribirnos directamente por WhatsApp y agendar tu clase de prueba.'
+      '¡Motívate! Escríbenos al WhatsApp +569 54786971 para resolver tus dudas o agendar tu visita.'
   }
 };

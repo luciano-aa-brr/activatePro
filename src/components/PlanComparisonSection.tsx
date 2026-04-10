@@ -4,52 +4,50 @@ import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
 export function PlanComparisonSection() {
-  // Estructura de la tabla: 5 columnas x 9 filas
-  const columns = ['Beneficio', 'Open Gym', 'Actívate Básico', 'Actívate Pro', 'Fullfit'];
+  // Estructura de la tabla: 3 columnas x 9 filas
+  const columns = ['Beneficio', 'Plan Básico', 'Plan Pro'];
 
   // 8 filas de datos (sin contar el header)
   const rows = [
     {
-      benefit: 'Precio Mensual',
-      openGym: '$26.990',
-      activateBasic: '$29.990',
-      activatePro: '$39.990',
-      fullfit: '$59.990'
-    },
-    {
-      benefit: 'Clases personalizadas',
-      openGym: '-',
-      activateBasic: '8 al mes',
-      activatePro: '12 al mes',
-      fullfit: '16 al mex (2x sem + 2x pilates)'
-    },
-    {
-      benefit: 'Acceso a Open Gym',
-      openGym: 'Ilimitado',
+      benefit: '3 clases grupales personalizadas / sem',
       activateBasic: '-',
-      activatePro: 'Incluido',
-      fullfit: 'Incluido'
+      activatePro: 'check'
     },
     {
-      benefit: 'Clases Libres',
-      openGym: '-',
+      benefit: 'Entrenamiento guiado y cercano',
       activateBasic: '-',
-      activatePro: '2 al mes',
-      fullfit: 'Incluidas'
+      activatePro: 'check'
     },
     {
-      benefit: 'Guía de Coaches',
-      openGym: '-',
-      activateBasic: 'check',
-      activatePro: 'Prioritaria',
-      fullfit: 'Prioritaria'
+      benefit: 'Cupos reducidos por hora',
+      activateBasic: '-',
+      activatePro: 'check'
     },
     {
-      benefit: 'Sin Filas / Sin Multitudes',
-      openGym: 'check',
+      benefit: 'Supervisión técnica en clases',
       activateBasic: 'check',
-      activatePro: 'check',
-      fullfit: 'check'
+      activatePro: 'check'
+    },
+    {
+      benefit: 'Horarios exclusivos (AM/PM)',
+      activateBasic: '-',
+      activatePro: 'check'
+    },
+    {
+      benefit: 'Acceso combinado (Clases + Libre)',
+      activateBasic: '-',
+      activatePro: 'check'
+    },
+    {
+      benefit: 'Descuento batidos proteicos (20%)',
+      activateBasic: '-',
+      activatePro: 'check'
+    },
+    {
+      benefit: 'Descuento cafetería Milarí (50%)',
+      activateBasic: '-',
+      activatePro: 'check'
     }
   ];
 
@@ -110,7 +108,7 @@ export function PlanComparisonSection() {
                       className={`px-8 py-8 text-left font-bold ${
                         index === 0
                           ? 'text-white/90 text-xl'
-                          : index === 3
+                          : index === 2
                             ? 'text-[#e04f21] text-xl bg-[#e04f21]/10'
                             : 'text-white/80 text-lg'
                       }`}
@@ -136,16 +134,10 @@ export function PlanComparisonSection() {
                       {row.benefit}
                     </td>
                     <td className="px-8 py-6 text-white/70 text-base">
-                      {renderCellContent(row.openGym)}
-                    </td>
-                    <td className="px-8 py-6 text-white/70 text-base">
                       {renderCellContent(row.activateBasic)}
                     </td>
                     <td className="px-8 py-6 text-white/70 text-base bg-[#e04f21]/5">
                       {renderCellContent(row.activatePro)}
-                    </td>
-                    <td className="px-8 py-6 text-white/70 text-base">
-                      {renderCellContent(row.fullfit)}
                     </td>
                   </motion.tr>
                 ))}
@@ -155,38 +147,12 @@ export function PlanComparisonSection() {
 
           {/* Mobile/Tablet Cards View */}
           <div className="lg:hidden p-6 space-y-6">
-            {/* Open Gym Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="glass rounded-xl p-6"
-            >
-              <h3 className="font-bold text-lg mb-4 text-white/90">Open Gym</h3>
-              <div className="space-y-3">
-                {rows.map((row, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center pb-3 border-b border-white/5 last:border-0"
-                  >
-                    <span className="text-sm font-semibold text-white/70 flex-1">
-                      {row.benefit || `Beneficio ${index + 1}`}
-                    </span>
-                    <span className="text-sm text-white/60 flex-1 text-right">
-                      {renderCellContent(row.openGym)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
             {/* Actívate Básico Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.5 }}
               className="glass rounded-xl p-6"
             >
               <h3 className="font-bold text-lg mb-4 text-white/90">Actívate Básico</h3>
@@ -212,7 +178,7 @@ export function PlanComparisonSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="glass rounded-xl p-6 border-2 border-[#e04f21] relative"
             >
               <div className="absolute -top-3 left-6 bg-[#e04f21] px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
@@ -230,32 +196,6 @@ export function PlanComparisonSection() {
                     </span>
                     <span className="text-sm text-white/60 flex-1 text-right">
                       {renderCellContent(row.activatePro)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Fullfit Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="glass rounded-xl p-6"
-            >
-              <h3 className="font-bold text-lg mb-4 text-white/90">Fullfit</h3>
-              <div className="space-y-3">
-                {rows.map((row, index) => (
-                  <div
-                    key={index}
-                    className="flex justify-between items-center pb-3 border-b border-white/5 last:border-0"
-                  >
-                    <span className="text-sm font-semibold text-white/70 flex-1">
-                      {row.benefit || `Beneficio ${index + 1}`}
-                    </span>
-                    <span className="text-sm text-white/60 flex-1 text-right">
-                      {renderCellContent(row.fullfit)}
                     </span>
                   </div>
                 ))}

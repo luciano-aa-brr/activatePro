@@ -4,21 +4,18 @@ import { motion } from 'framer-motion';
 import { Clock, AlertCircle, Calendar } from 'lucide-react';
 
 const schedule = [
-  { day: 'Lunes - Viernes', hours: '5:00 AM - 11:00 PM' },
-  { day: 'Sábados', hours: '7:00 AM - 9:00 PM' },
-  { day: 'Domingos', hours: '8:00 AM - 6:00 PM' },
-  { day: 'Festivos', hours: '9:00 AM - 3:00 PM' }
+  { day: 'Lunes a Jueves', hours: '09:00-12:00 | 16:00-22:00' },
+  { day: 'Viernes', hours: '09:00-12:00 | 16:00-21:00' },
+  { day: 'Sábados', hours: '12:00-16:00' },
+  { day: 'Domingos', hours: 'Cerrado' }
 ];
 
 const rules = [
-  'Respeta el espacio y equipamiento compartido',
-  'Limpia y desinfecta el equipo después de usarlo',
-  'Usa toalla en todo momento durante el entrenamiento',
-  'Respeta las zonas designadas para cada actividad',
-  'No se permite el uso de zapatos de calle en áreas de entrenamiento',
-  'Mantén tu taquilla limpia y organizada',
-  'Sigue las instrucciones de los entrenadores',
-  'Disfruta y motiva a otros miembros'
+  'No dejar botellas plásticas dentro del local',
+  'Respetar horarios de entrada y cierre',
+  'Ordenar discos y mancuernas después de usar',
+  'Priorizar tu seguridad y la de los demás',
+  'Uso obligatorio de toalla'
 ];
 
 const classSchedule = [

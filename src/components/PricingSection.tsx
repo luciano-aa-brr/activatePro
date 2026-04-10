@@ -6,56 +6,32 @@ import { PlanDialog } from './PlanDialog';
 
 const plans = [
   {
-    name: 'Open Gym',
-    price: '26.990',
+    name: 'Plan Básico',
+    price: '33.990',
     period: 'mes',
-    description: 'Este plan es perfecto para tí si:',
+    description: 'Acceso flexible y apoyo técnico esencial.',
     features: [
-      'Ya tienes experiencia y una rutina definida',
-      'Valoras la flexibilidad para entrenar sin horarios fijos dentro de nuestros bloques horarios',
-      'Buscas un ambiente limpio y sin las multitudes de los gimnasios comerciales',
-      'Exiges equipamiento de calidad para llevar tu rendimiento al máximo',
-      'Valoras tu comodidad y tiempo: Llegas, estacionas y entrenas gracias a nuestro estacionamiento gratis para socios'
+      'Acceso Lu-Vi: 10:00-12:00 y 16:00-20:00 hrs',
+      'Acceso Sábados: 12:00-16:00 hrs',
+      'Uso libre de sala en bloques disponibles',
+      'Apoyo y corrección técnica por el staff',
+      'Orientación en rutinas de fuerza y funcional'
     ],
-    cta: 'Qué esperar'
+    cta: 'Saber más'
   },
   {
-    name: 'Actívate Básico',
-    price: '29.990',
+    name: 'Plan Pro',
+    price: '42.990',
     period: 'mes',
-    description: 'Este plan incluye 8 clases al mes  y es perfecto para ti si:',
+    description: 'Entrenamiento guiado de alto nivel y beneficios exclusivos.',
     features: [
-      'Buscas equilibrio: Quieres integrar el ejercicio en tu rutina semanal sin presiones, con la guía de profesionales',
-      'Calidad sobre cantidad: Prefieres 8 sesiones al mes bien ejecutadas y supervisadas que ir a ciegas a un gimnasio convencional',
-      'Eres constante pero flexible: Ideal para quienes entrenan dos veces por semana con un objetivo claro ',
-      'Valoras tu tiempo: Disfrutas de un espacio eficiente, sin filas y con estacionamiento gratuito para que nada te detenga'
+      '3 clases grupales personalizadas por semana',
+      'Cupos reducidos para mejor supervisión',
+      'Acceso adicional en horarios Plan Básico',
+      'Horarios exclusivos: 09:00 AM y 20:00-22:00 PM',
+      'Convenio exclusivo en cafetería Milarí'
     ],
-    cta: 'Qué esperar'
-  },
-  {
-    name: 'Actívate Pro',
-    price: '39.990',
-    period: 'mes',
-    description: 'Este plan incluye: 12 clases personalizadas al mes + 2 clases libres + OpenGym',
-    features: [
-      'Buscas resultados reales: Quieres la combinación perfecta entre 12 clases personalizadas y la libertad de entrenar a tu aire ',
-      'Exiges versatilidad: Valoras tener sesiones dirigidas y además contar con Open Gym y clases libres para complementar tu semana',
-      'Necesitas guía experta: Quieres coaches que conozcan tus límites y te ayuden a superarlos de forma consciente '
-    ],
-    cta: 'Qué esperar'
-  },
-  {
-    name: 'Fullfit ',
-    price: '59.990',
-    period: 'mes',
-    description:
-      'Este plan incluye: 2 clases personalizadas por semana + 2 clases de pilates a la semana',
-    features: [
-      'Este plan es perfecto si buscas una transformación integral: Quieres el balance perfecto entre la fuerza de las clases personalizadas y la movilidad del Pilates',
-      'Priorizas el bienestar consciente: Entiendes que potenciar el rendimiento requiere tanto de intensidad como de control corporal y flexibilidad',
-      'Deseas un acompañamiento premium: 4 sesiones semanales (2 personalizadas + 2 Pilates) diseñadas para quienes no dejan nada al azar '
-    ],
-    cta: 'Qué esperar'
+    cta: 'Inscribirme'
   }
 ];
 

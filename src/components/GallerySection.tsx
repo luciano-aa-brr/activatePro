@@ -90,8 +90,9 @@ export function GallerySection() {
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
                   transition={{ duration: 0.5, delay: index * 0.03 }}
-                  className={`relative group cursor-pointer overflow-hidden rounded-xl ${index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''
-                    }`}
+                  className={`relative group cursor-pointer overflow-hidden rounded-xl ${
+                    index === 0 || index === 5 ? 'md:col-span-2 md:row-span-2' : ''
+                  }`}
                 >
                   <div className="relative aspect-square overflow-hidden">
                     <Image

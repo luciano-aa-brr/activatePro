@@ -23,7 +23,7 @@ interface PlanDialogProps {
 export function PlanDialog({ planName, planPrice, planPeriod, children }: PlanDialogProps) {
   // Contenido específico de cada plan
   const planDetails = {
-    'Open Gym': {
+    'Plan Básico': {
       benefits: [
         {
           title: 'Libertad total para entrenar a tu ritmo',
@@ -38,22 +38,7 @@ export function PlanDialog({ planName, planPrice, planPeriod, children }: PlanDi
       ],
       url: 'https://www.mercadopago.cl/subscriptions/checkout?preapproval_plan_id=dacf77d3b3bb400d8f41a37caf57677f'
     },
-    'Actívate Básico': {
-      benefits: [
-        {
-          title: 'Guía profesional en cada sesión',
-          description:
-            'Con 8 clases al mes supervisadas por entrenadores expertos, cada sesión está diseñada para maximizar resultados. No entrenas a ciegas: recibes corrección de técnica, progresiones adecuadas y un plan balanceado que se adapta a tu nivel y objetivos. Ideal para entrenar 2 veces por semana de forma constante.'
-        },
-        {
-          title: 'Calidad sobre cantidad',
-          description:
-            'Este plan prioriza la ejecución perfecta y el progreso sostenible. En un ambiente de grupos reducidos, recibes atención personalizada que garantiza que cada repetición cuente. Sin presiones, sin filas, solo entrenamiento eficiente con profesionales que se preocupan por tu progreso.'
-        }
-      ],
-      url: 'https://www.mercadopago.cl/subscriptions/checkout?preapproval_plan_id=59b870b3919049939f6d5c7fcaef0955'
-    },
-    'Actívate Pro': {
+    'Plan Pro': {
       benefits: [
         {
           title: 'Programa estructurado y eficiente',
@@ -63,25 +48,15 @@ export function PlanDialog({ planName, planPrice, planPeriod, children }: PlanDi
         {
           title: 'Supervisión y corrección constante',
           description:
-            'Al ser pocas personas, el entrenador tiene la capacidad de observar, corregir y adaptar los ejercicios para cada integrante del grupo.'
+            'Al ser pocas personas, el entrenador tiene la capacidad de observar, corregir y adaptar los ejercicios para cada integrante del grupo. Con 3 clases personalizadas por semana, obtienes el equilibrio perfecto entre guía experta y libertad para entrenar.'
+        },
+        {
+          title: 'Horarios exclusivos y beneficios',
+          description:
+            'Acceso a horarios premium, descuentos especiales en batidos proteicos y cafetería Milarí. Una experiencia completa diseñada para quienes buscan máximos resultados.'
         }
       ],
       url: 'https://www.mercadopago.cl/subscriptions/checkout?preapproval_plan_id=49f233686a92476fa6302ebac4793a8b'
-    },
-    'Fullfit ': {
-      benefits: [
-        {
-          title: 'Programa estructurado y eficiente',
-          description:
-            'Cada sesión está planificada para garantizar un entrenamiento completo, balanceado y enfocado en conseguir resultados. El entrenador diseña una rutina que se adapta a ustedes, con progresiones y modificaciones individuales para que cada uno trabaje a su máxima capacidad y de forma segura.'
-        },
-        {
-          title: 'Supervisión y corrección constante',
-          description:
-            'Al ser pocas personas, el entrenador tiene la capacidad de observar, corregir y adaptar los ejercicios para cada integrante del grupo.'
-        }
-      ],
-      url: ''
     }
   };
 
@@ -129,12 +104,22 @@ export function PlanDialog({ planName, planPrice, planPeriod, children }: PlanDi
               Cancelar
             </button>
           </DialogClose>
-          <Link
-            href={currentPlanDetails.url}
-            className="bg-[#e04f21] hover:bg-[#c44419] px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(224,79,33,0.5)] text-white"
-          >
-            ¡Quiero este plan!
-          </Link>
+          {currentPlanDetails?.url ? (
+            <Link
+              href={currentPlanDetails.url}
+              className="bg-[#e04f21] hover:bg-[#c44419] px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(224,79,33,0.5)] text-white"
+            >
+              ¡Quiero este plan!
+            </Link>
+          ) : (
+            <button
+              type="button"
+              disabled
+              className="bg-[#e04f21]/50 px-6 py-3 rounded-xl font-semibold text-white cursor-not-allowed"
+            >
+              URL no disponible
+            </button>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>
