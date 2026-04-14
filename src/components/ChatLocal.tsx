@@ -17,6 +17,7 @@ export function ChatLocal() {
       {/* Botón Flotante Principal */}
       <button
         onClick={() => setIsOpen(true)}
+        aria-label="Abrir chat de asistencia"
         className="fixed bottom-6 right-6 z-50 bg-[#e04f21] p-4 rounded-full shadow-lg hover:scale-110 transition-transform md:bottom-8 md:right-8 border border-white/10"
       >
         <MessageCircle className="text-white w-6 h-6" />
@@ -45,6 +46,7 @@ export function ChatLocal() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
+                  aria-label="Cerrar chat"
                   className="hover:bg-black/20 p-1 rounded-full transition-colors"
                 >
                   <X className="w-6 h-6" />
