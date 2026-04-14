@@ -1,7 +1,6 @@
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const maintenanceMode = process.env.NEXT_PUBLIC_MAINTENANCE_MODE === 'true';
 
   // Si el modo mantenimiento está activo y NO es la página de mantenimiento
@@ -23,6 +22,6 @@ export const config = {
      * - favicon.ico (favicon file)
      * - /maintenance (maintenance page)
      */
-    '/((?!api|_next/static|_next/image|favicon.ico|maintenance).*)'
-  ]
+    '/((?!api|_next/static|_next/image|favicon.ico|maintenance).*)',
+  ],
 };
